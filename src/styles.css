@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* SweetAlert2 custom styles */
+.swal2-popup {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    border-radius: 10px !important;
+}
+
+.swal2-title {
+    font-weight: 500 !important;
+}
+
+.swal2-confirm {
+    background-color: #6e8efb !important;
+    border-radius: 5px !important;
+}
+
+.swal2-cancel {
+    background-color: #ff4757 !important;
+    border-radius: 5px !important;
+}

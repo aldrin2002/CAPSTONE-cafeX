@@ -1,0 +1,26 @@
+<div class="menu-container">
+  <button class="exit-button" (click)="goBack()">Back to Home</button>
+  <h1>Our Menu</h1>
+  
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading menu items...</p>
+  </div>
+  
+  <div *ngIf="!isLoading" class="menu-content">
+    <div *ngFor="let category of categories" class="category-section">
+      <h2>{{ category }}</h2>
+      <div class="menu-items">
+        <div *ngFor="let item of getItemsByCategory(category)" class="menu-item">
+          <div class="menu-item-image">
+            <img [src]="item.image_url" [alt]="item.name" (error)="onImageError($event)">
+          </div>
+          <div class="menu-item-details">
+            <h3>{{ item.name }}</h3>
+            <p class="description">{{ item.description }}</p>
+            <p class="price">${{ item.price.toFixed(2) }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

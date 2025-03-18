@@ -1,0 +1,210 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  overflow: hidden;
+  position: relative;
+}
+
+.login-container::before {
+  content: 'Welcome to CafeX';
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Bubble animation */
+.login-container {
+  position: relative;
+}
+
+/* Create floating bubbles */
+@keyframes bubble-float {
+  0% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) scale(1);
+    opacity: 0;
+  }
+}
+
+.login-container::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Generate the bubbles */
+.login-container::after {
+  background: 
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 20% 60%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 60% 20%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat,
+    radial-gradient(circle at 90% 90%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 20%) no-repeat;
+  background-size: 100px 100px;
+  animation: bubble-float 15s linear infinite;
+  filter: blur(2px);
+}
+
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  width: 350px;
+  max-width: 90%;
+  position: relative;
+}
+
+.form-wrapper::before {
+  content: 'Login';
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #6e8efb;
+  letter-spacing: -0.5px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #555;
+  letter-spacing: 0.2px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+input:focus {
+  border-color: #6e8efb;
+  outline: none;
+  box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+}
+
+input.ng-touched.ng-invalid {
+  border-color: #ff4757;
+}
+
+.error-message {
+  color: #ff4757;
+  font-size: 0.75rem;
+  margin-top: 5px;
+  font-weight: 400;
+}
+
+.server-error {
+  background-color: rgba(255, 71, 87, 0.1);
+  color: #ff4757;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-family: inherit;
+}
+
+button:hover:not([disabled]) {
+  background: linear-gradient(135deg, #5a7df3, #9361d3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.form-footer a {
+  color: #6e8efb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .login-container::before {
+    font-size: 1.8rem;
+    top: 10%;
+  }
+  
+  .form-wrapper {
+    padding: 20px;
+  }
+}

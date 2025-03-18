@@ -1,0 +1,30 @@
+<div class="gallery-container">
+  <button class="exit-button" (click)="goBack()">Back to Home</button>
+  <h1>Our Gallery</h1>
+
+  
+  <div *ngIf="isLoading" class="loading">
+    <p>Loading gallery items...</p>
+  </div>
+  
+  <div *ngIf="!isLoading" class="gallery-grid">
+    <div *ngFor="let item of galleryItems" class="gallery-item" (click)="openImage(item)">
+      <img [src]="item.image_url" [alt]="item.title">
+      <div class="gallery-item-overlay">
+        <h3>{{ item.title }}</h3>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Image Modal -->
+  <div *ngIf="selectedItem" class="modal" (click)="closeImage()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeImage()">&times;</span>
+      <img [src]="selectedItem.image_url" [alt]="selectedItem.title">
+      <div class="modal-details">
+        <h3>{{ selectedItem.title }}</h3>
+        <p>{{ selectedItem.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

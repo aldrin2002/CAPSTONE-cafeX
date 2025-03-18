@@ -1,0 +1,79 @@
+<div class="signup-container">
+  <div class="form-wrapper">
+    <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input 
+          type="text" 
+          id="fullName" 
+          name="fullName" 
+          [(ngModel)]="user.fullName" 
+          #fullName="ngModel"
+          required 
+          placeholder="Enter your full name">
+        <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)" class="error-message">
+          <span *ngIf="fullName.errors?.['required']">Full name is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          [(ngModel)]="user.email"
+          #email="ngModel" 
+          required 
+          email
+          placeholder="Enter your email">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+          <span *ngIf="email.errors?.['required']">Email is required</span>
+          <span *ngIf="email.errors?.['email']">Please enter a valid email</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          [(ngModel)]="user.password"
+          #password="ngModel" 
+          required 
+          minlength="8"
+          placeholder="Enter your password">
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+          <span *ngIf="password.errors?.['required']">Password is required</span>
+          <span *ngIf="password.errors?.['minlength']">Password must be at least 8 characters long</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input 
+          type="tel" 
+          id="phone" 
+          name="phone" 
+          [(ngModel)]="user.phone"
+          #phone="ngModel" 
+          required 
+          pattern="[0-9]{10,15}"
+          placeholder="Enter your phone number">
+        <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="error-message">
+          <span *ngIf="phone.errors?.['required']">Phone number is required</span>
+          <span *ngIf="phone.errors?.['pattern']">Please enter a valid phone number</span>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="isLoading || signupForm.invalid">
+        {{ isLoading ? 'Creating Account...' : 'Sign Up' }}
+      </button>
+      
+      <div class="form-footer">
+        Already have an account? <a routerLink="/login">Login</a>
+      </div>
+    </form>
+  </div>
+</div>
